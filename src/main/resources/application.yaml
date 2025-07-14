@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: arya-banking-common
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:ka3k912719@bankingcluster.ayhvgpk.mongodb.net/metadata?retryWrites=true&w=majority&appName=bankingCluster
+
+
+app:
+  metadata:
+    versioning:
+      enabled: true

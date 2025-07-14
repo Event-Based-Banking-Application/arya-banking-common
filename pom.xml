@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.arya.banking</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>arya-banking-common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>arya-banking-common</name>
     <description>arya-banking-common</description>
@@ -56,7 +56,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.36</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
