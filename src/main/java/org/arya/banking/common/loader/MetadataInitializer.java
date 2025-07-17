@@ -33,7 +33,6 @@ public class MetadataInitializer {
         this.metaDataUtils = new MetaDataUtils();
     }
 
-    @PostConstruct
     public void initializeMetadata() {
 
         ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
