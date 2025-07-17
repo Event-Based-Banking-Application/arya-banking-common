@@ -13,19 +13,34 @@
     <version>1.0.0</version>
     <name>arya-banking-common</name>
     <description>arya-banking-common</description>
-    <url/>
+
+    <url>https://github.com/Event-Based-Banking-Application/arya-banking-common</url>
+
     <licenses>
-        <license/>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
+
     <developers>
-        <developer/>
+        <developer>
+            <id>karthik</id>
+            <name>Karthik Kulkarni</name>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
     </developers>
+
     <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
+        <connection>scm:git:https://github.com/Event-Based-Banking-Application/arya-banking-common</connection>
+        <developerConnection>scm:git@github.com:Event-Based-Banking-Application/arya-banking-common.git</developerConnection>
+        <url>https://github.com/Event-Based-Banking-Application/arya-banking-common</url>
+        <tag>HEAD</tag>
     </scm>
+
     <properties>
         <java.version>17</java.version>
     </properties>
