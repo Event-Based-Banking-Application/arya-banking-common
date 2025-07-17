@@ -1,5 +1,13 @@
 name: SonarCloud Analysis
 
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  run: |
+    if [ -z "${{ secrets.SONAR_TOKEN }}" ]; then
+      echo "⚠️ SonarCloud token is not set. Skipping SonarCloud analysis."
+      exit 0
+    fi
+
 on:
   push:
     branches:
