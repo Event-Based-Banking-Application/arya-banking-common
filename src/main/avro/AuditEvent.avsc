@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "namespace": "org.arya.banking.common.avro",
+  "name": "AuditEvent",
+  "fields": [
+    { "name": "actionType", "type": "string" },
+    { "name": "targetTable", "type": "string" },
+    { "name": "targetId", "type": "string" },
+    { "name": "userId", "type": "string" },
+    { "name": "changeType", "type": "string" },
+    { "name": "details", "type": "string" }
+  ]
+}
