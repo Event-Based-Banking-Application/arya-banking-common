@@ -34,6 +34,6 @@ jobs:
 
       # Step 4: Build the project using the committed settings.xml
       - name: Build and Package the Application
-        run: mvn clean package -s settings.xml
+        run: mvn clean deploy -s settings.xml
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
