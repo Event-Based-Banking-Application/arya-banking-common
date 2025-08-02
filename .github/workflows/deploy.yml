@@ -3,12 +3,13 @@ name: Build and Package Application (with repo settings.xml)
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  build-and-package:
     runs-on: ubuntu-latest
 
     steps:
@@ -47,7 +48,7 @@ jobs:
 
       # Step 6: Create and push tag
       - name: Create and push tag
-        if: success()
+        if: github.event_name == 'push' && success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
