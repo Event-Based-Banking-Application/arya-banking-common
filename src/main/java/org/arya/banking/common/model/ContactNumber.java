@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Document(collection = "contact_numbers")
 @TrackMetadata(name = "Contact Number", description = "Stores information of contact numbers related to Users")
-public class ContactNumber {
+public class ContactNumber extends AryaBase {
 
     @Id
     private String id;
@@ -35,15 +35,6 @@ public class ContactNumber {
     @Field("isVerified")
     private boolean isVerified;
 
-    @Field("createdAt")
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @Field("updatedAt")
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
-
-
     public String getUserId() {
         return userId;
     }
@@ -51,7 +42,6 @@ public class ContactNumber {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
 
     public String getContactNumber() {
         return contactNumber;
@@ -75,21 +65,5 @@ public class ContactNumber {
 
     public void setVerified(boolean verified) {
         this.isVerified = verified;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

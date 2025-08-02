@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Document(collection = "address")
 @TrackMetadata(name = "Address", description = "Stores the addresses of the users")
-public class Address {
+public class Address extends AryaBase {
 
     @Id
     private String id;
@@ -46,31 +46,6 @@ public class Address {
     @NotNull
     @Field("isPrimary")
     private boolean isPrimary;
-
-    @CreatedDate
-    @Field("createdAt")
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Field("updatedAt")
-    private LocalDateTime updatedAt;
-
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 
     public String getCountry() {
         return country;

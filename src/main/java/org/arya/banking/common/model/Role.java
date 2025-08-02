@@ -13,7 +13,7 @@ import java.util.List;
 
 @Document(collection = "role")
 @TrackMetadata(name = "Role", description = "Stores the information of the roles")
-public class Role {
+public class Role extends AryaBase {
 
     @Id
     private String id;
@@ -29,14 +29,6 @@ public class Role {
     @NotNull
     @Field("permissions")
     private List<Permission> permissions;
-
-    @CreatedDate
-    @Field("createdAt")
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Field("updatedAt")
-    private LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -68,21 +60,5 @@ public class Role {
 
     public void setPermissions(List<Permission> permissions) {
         this.permissions = permissions;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

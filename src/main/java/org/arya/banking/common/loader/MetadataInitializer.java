@@ -8,6 +8,7 @@ import org.arya.banking.common.repository.TableMetadataRepository;
 import org.arya.banking.common.utils.MetaDataUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
@@ -35,7 +36,14 @@ public class MetadataInitializer {
 
     public void initializeMetadata() {
 
-        ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
+        ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false) {
+
+            @Override
+            protected boolean isCandidateComponent(AnnotatedBeanDefinition beanDefinition) {
+                // Allow abstract classes
+                return true;
+            }
+        };
         scanner.addIncludeFilter(new AnnotationTypeFilter(TrackMetadata.class));
 
         Set<BeanDefinition> beanDefinitions = scanner.findCandidateComponents(BASE_MODEL_PACKAGE);
@@ -44,6 +52,7 @@ public class MetadataInitializer {
 
             try {
                 Class<?> modelClass = Class.forName(beanDefinition.getBeanClassName());
+                log.debug("{} class scanned for processing", modelClass.getSimpleName());
                 processMetadata(modelClass);
 
             } catch (ClassNotFoundException e) {
@@ -56,10 +65,11 @@ public class MetadataInitializer {
     private void processMetadata(Class<?> modelClass) {
 
         TrackMetadata trackMetadata = modelClass.getAnnotation(TrackMetadata.class);
+        log.debug("Track meta data scanned for: {}", trackMetadata);
         if (null == trackMetadata) return;
 
         String modelName = trackMetadata.name();
-        log.info("Processing {} model", modelName);
+        log.info("Meta data processing for: {} model", modelName);
 
         List<ColumnMetadata> columnMetadatas = new ArrayList<>();
         StringBuilder schemaBuilder = new StringBuilder();
@@ -93,6 +103,7 @@ public class MetadataInitializer {
         TableMetadata tableMetadata = null;
 
         if (optionalTableMetadata.isEmpty()) {
+
             tableMetadata = new TableMetadata();
             tableMetadata.setModelName(modelName);
             tableMetadata.setDescription(trackMetadata.description());
@@ -103,6 +114,7 @@ public class MetadataInitializer {
             log.info("Table Metadata: {}", tableMetadata);
         } else if (!optionalTableMetadata.get().getSchemaHash().equals(schemaHash)) {
 
+            tableMetadata = optionalTableMetadata.get();
             String newVersion = metaDataUtils.generateVersion(columnMetadatas, tableMetadata.getColumnMetadata(), tableMetadata.getVersion(), tableMetadata.getSchemaHash(), schemaHash);
             tableMetadata.setVersion(newVersion);
             tableMetadata.setSchemaHash(schemaHash);

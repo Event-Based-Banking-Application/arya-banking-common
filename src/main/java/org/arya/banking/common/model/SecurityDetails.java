@@ -13,7 +13,7 @@ import java.util.List;
 
 @Document(collection = "security_details")
 @TrackMetadata(name = "Security Details", description = "Stores information about the security details of the user")
-public class SecurityDetails {
+public class SecurityDetails extends AryaBase {
 
     @Id
     private String id;
@@ -37,14 +37,6 @@ public class SecurityDetails {
     @NotNull
     @Field("loginFailedAttempts")
     private Integer loginFailedAttempts;
-
-    @Field("createdAt")
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @Field("updatedAt")
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -92,21 +84,5 @@ public class SecurityDetails {
 
     public void setLoginFailedAttempts(Integer loginFailedAttempts) {
         this.loginFailedAttempts = loginFailedAttempts;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

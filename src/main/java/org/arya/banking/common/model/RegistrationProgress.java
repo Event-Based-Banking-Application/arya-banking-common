@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Document(collection = "registration_progress")
 @TrackMetadata(name = "Registration Progress", description = "Used to track the registration progress of the user")
-public class RegistrationProgress {
+public class RegistrationProgress extends AryaBase {
 
     @Id
     private String id;
@@ -36,14 +36,6 @@ public class RegistrationProgress {
     @NotNull
     @Field("nextStep")
     private String nextStep;
-
-    @CreatedDate
-    @Field("createdAt")
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Field("updatedAt")
-    private LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -91,21 +83,5 @@ public class RegistrationProgress {
 
     public void setNextStep(String nextStep) {
         this.nextStep = nextStep;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

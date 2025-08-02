@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Document(collection = "user_credentials")
 @TrackMetadata(name = "User Credentials", description = "Stores the credentials of the user")
-public class UserCredentials {
+public class UserCredentials extends AryaBase{
 
     @Id
     private String id;
@@ -28,14 +28,6 @@ public class UserCredentials {
     @NotNull
     @Field("passwordSalt")
     private String passwordSalt;
-
-    @Field("createdAt")
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @Field("updatedAt")
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -67,21 +59,5 @@ public class UserCredentials {
 
     public void setPasswordSalt(String passwordSalt) {
         this.passwordSalt = passwordSalt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

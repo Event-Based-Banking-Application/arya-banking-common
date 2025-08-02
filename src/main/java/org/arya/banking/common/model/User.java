@@ -12,7 +12,7 @@ import java.util.List;
 
 @Document(collection = "user")
 @TrackMetadata(name = "User", description = "Stores information about the User")
-public class User {
+public class User extends AryaBase {
 
     @Id
     private String id;
@@ -55,12 +55,6 @@ public class User {
     @NotNull
     @Field("securityDetailId")
     private String securityDetailId;
-
-    @Field("createdAt")
-    private LocalDateTime createdAt;
-
-    @Field("updatedAt")
-    private LocalDateTime updatedAt;
 
     public String getId() {
         return id;
@@ -124,22 +118,6 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getRoleId() {
