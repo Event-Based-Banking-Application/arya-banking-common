@@ -2,15 +2,16 @@ package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDateTime;
-
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Document(collection = "contact_numbers")
 @TrackMetadata(name = "Contact Number", description = "Stores information of contact numbers related to Users")
 public class ContactNumber extends AryaBase {
@@ -34,36 +35,4 @@ public class ContactNumber extends AryaBase {
     @NotNull
     @Field("isVerified")
     private boolean isVerified;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public ContactNumberType getType() {
-        return type;
-    }
-
-    public void setType(ContactNumberType type) {
-        this.type = type;
-    }
-
-    public boolean isVerified() {
-        return isVerified;
-    }
-
-    public void setVerified(boolean verified) {
-        this.isVerified = verified;
-    }
 }

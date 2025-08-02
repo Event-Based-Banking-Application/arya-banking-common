@@ -1,6 +1,5 @@
 package org.arya.banking.common.loader;
 
-import jakarta.annotation.PostConstruct;
 import org.arya.banking.common.metadata.ColumnMetadata;
 import org.arya.banking.common.metadata.TableMetadata;
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
