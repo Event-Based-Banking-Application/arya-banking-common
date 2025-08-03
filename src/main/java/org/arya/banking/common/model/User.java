@@ -4,9 +4,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.EqualsAndHashCode.Include;
 
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -20,6 +22,11 @@ public class User extends AryaBase {
 
     @Id
     private String id;
+
+    @NotNull
+    @Field("userId")
+    @Indexed(unique = true)
+    private String userId;
 
     @NotNull
     @Field("firstName")
@@ -37,16 +44,16 @@ public class User extends AryaBase {
     private String emailId;
 
     @NotNull
-    @Field("contactNumberIds")
-    private List<String> contactNumberIds;
+    @Field("contactNumbers")
+    private List<ContactNumber> contactNumbers;
 
     @NotNull
-    @Field("addressIds")
-    private List<String> addressIds;
+    @Field("addresses")
+    private List<Address> addresss;
 
     @NotNull
-    @Field("primaryAddressId")
-    private String primaryAddressId;
+    @Field("primaryAddress")
+    private Address primaryAddress;
 
     @NotNull
     @Field("status")

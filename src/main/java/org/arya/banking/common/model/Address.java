@@ -3,21 +3,13 @@ package org.arya.banking.common.model;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Document(collection = "address")
 @TrackMetadata(name = "Address", description = "Stores the addresses of the users")
-public class Address extends AryaBase {
-
-    @Id
-    private String id;
+public class Address {
 
     @NotNull
     @Field("street")
