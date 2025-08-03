@@ -1,15 +1,16 @@
 package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.time.LocalDateTime;
-
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Document(collection = "registration_progress")
 @TrackMetadata(name = "Registration Progress", description = "Used to track the registration progress of the user")
 public class RegistrationProgress extends AryaBase {
@@ -36,52 +37,4 @@ public class RegistrationProgress extends AryaBase {
     @NotNull
     @Field("nextStep")
     private String nextStep;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getSubStatus() {
-        return subStatus;
-    }
-
-    public void setSubStatus(String subStatus) {
-        this.subStatus = subStatus;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getLastStepCompleted() {
-        return lastStepCompleted;
-    }
-
-    public void setLastStepCompleted(String lastStepCompleted) {
-        this.lastStepCompleted = lastStepCompleted;
-    }
-
-    public String getNextStep() {
-        return nextStep;
-    }
-
-    public void setNextStep(String nextStep) {
-        this.nextStep = nextStep;
-    }
 }

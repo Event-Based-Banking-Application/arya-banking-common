@@ -2,6 +2,9 @@ package org.arya.banking.common.model;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import lombok.Data;
+
+@Data
 public class SecurityQuestions {
 
     @Field("question")
@@ -9,20 +12,4 @@ public class SecurityQuestions {
 
     @Field("answer")
     private String answer;
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
 }
