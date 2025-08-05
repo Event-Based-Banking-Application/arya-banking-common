@@ -4,8 +4,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
-
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -46,6 +44,10 @@ public class User extends AryaBase {
     @NotNull
     @Field("contactNumbers")
     private List<ContactNumber> contactNumbers;
+
+    @NotNull
+    @Field("primaryContactNumber")
+    private String primaryContactNumber;
 
     @NotNull
     @Field("addresses")

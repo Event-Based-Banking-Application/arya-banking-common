@@ -2,18 +2,16 @@ package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 import lombok.Data;
 
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
+@Builder
 @TrackMetadata(name = "Contact Number", description = "Stores information of contact numbers related to Users")
 public class ContactNumber {
-
-    @NotNull
-    @Field("userId")
-    private String userId;
 
     @NotNull
     @Field("contactNumber")
