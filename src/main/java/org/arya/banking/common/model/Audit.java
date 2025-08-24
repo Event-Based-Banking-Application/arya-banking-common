@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.mongodb.lang.Nullable;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -23,6 +25,8 @@ public class Audit {
     @Field("actionType")
     private String actionType;
 
+    @Nullable
+    @Field("targetTable")
     private String targetTable;
 
     @NotNull
