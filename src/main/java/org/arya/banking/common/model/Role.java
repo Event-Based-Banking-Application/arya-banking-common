@@ -1,6 +1,7 @@
 package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "role")
 @TrackMetadata(name = "Role", description = "Stores the information of the roles")

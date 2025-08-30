@@ -1,6 +1,7 @@
 package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
 
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
@@ -14,6 +15,7 @@ import com.mongodb.lang.Nullable;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 @Document(collection = "audit")
 @TrackMetadata(name = "Audit", description = "Stores audit information of all the functionalities")
 public class Audit {

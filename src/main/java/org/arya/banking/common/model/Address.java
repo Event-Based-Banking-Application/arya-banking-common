@@ -2,12 +2,14 @@ package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 import lombok.Data;
 
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
+@Builder
 @TrackMetadata(name = "Address", description = "Stores the addresses of the users")
 public class Address {
 
