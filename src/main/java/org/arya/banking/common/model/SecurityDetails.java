@@ -23,6 +23,10 @@ public class SecurityDetails extends AryaBase {
     private String id;
 
     @NotNull
+    @Field("userId")
+    private String userId;
+
+    @NotNull
     @Field("securityQuestions")
     private List<SecurityQuestions> securityQuestions;
 

@@ -66,8 +66,4 @@ public class User extends AryaBase {
     @NotNull
     @Field("roleId")
     private String roleId;
-
-    @NotNull
-    @Field("securityDetailId")
-    private String securityDetailId;
 }

@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
                 .map(fieldError -> fieldError.getField() +": "+fieldError.getDefaultMessage())
                 .toList();
 
-        return new ResponseEntity<>(new ErrorResponse("403", errors.toString()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ErrorResponse("400", errors.toString()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(GlobalException.class)
@@ -30,6 +30,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ErrorResponse>(new ErrorResponse(
             globalException.getErrorCode(), globalException.getErrorMessage()), 
             HttpStatusCode.valueOf(globalException.getHttpErrorCode()));
+    }
+
+    @ExceptionHandler(InternalServerExceptionHandler.class)
+    public ResponseEntity<ErrorResponse> handleGlobalExceptions(InternalServerExceptionHandler internalServerExceptionHandler) {
+
+        return new ResponseEntity<ErrorResponse>(new ErrorResponse(
+                internalServerExceptionHandler.getStatus(), internalServerExceptionHandler.getMessage()),
+                HttpStatusCode.valueOf(Integer.parseInt(internalServerExceptionHandler.getStatus())));
     }
     
 }

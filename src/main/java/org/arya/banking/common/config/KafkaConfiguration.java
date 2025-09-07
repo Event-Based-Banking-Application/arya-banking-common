@@ -4,6 +4,7 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
@@ -24,6 +25,7 @@ import static org.arya.banking.common.constants.kafka.KafkaConstants.KAFKA_AVRO_
 
 
 @Configuration
+@ConditionalOnProperty(name = "spring.kafka.bootstrap-servers")
 public class KafkaConfiguration {
 
     @Value("${spring.kafka.bootstrap-servers}")
