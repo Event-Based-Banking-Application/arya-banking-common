@@ -1,6 +1,7 @@
 package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "registration_progress")
 @TrackMetadata(name = "Registration Progress", description = "Used to track the registration progress of the user")

@@ -2,6 +2,7 @@ package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.arya.banking.common.metadata.annotation.TrackMetadata;
@@ -13,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "user")
 @TrackMetadata(name = "User", description = "Stores information about the User")
@@ -64,8 +66,4 @@ public class User extends AryaBase {
     @NotNull
     @Field("roleId")
     private String roleId;
-
-    @NotNull
-    @Field("securityDetailId")
-    private String securityDetailId;
 }

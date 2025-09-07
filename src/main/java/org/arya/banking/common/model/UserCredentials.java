@@ -1,6 +1,7 @@
 package org.arya.banking.common.model;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "user_credentials")
 @TrackMetadata(name = "User Credentials", description = "Stores the credentials of the user")
@@ -25,8 +27,4 @@ public class UserCredentials extends AryaBase{
     @NotNull
     @Field("passwordHash")
     private String passwordHash;
-
-    @NotNull
-    @Field("passwordSalt")
-    private String passwordSalt;
 }
