@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "org.arya.banking.common.avro",
+  "name": "UserCreateEvent",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    }
+  ]
+}
