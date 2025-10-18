@@ -40,5 +40,5 @@ public class Address {
 
     @NotNull
     @Field("isPrimary")
-    private boolean isPrimary;
+    private AddressType addressType;
 }
