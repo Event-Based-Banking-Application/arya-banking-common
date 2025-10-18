@@ -10,6 +10,16 @@
     {
       "name": "status",
       "type": "string"
+    },
+    {
+      "name": "isEmailVerified",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "isContactVerified",
+      "type": "boolean",
+      "default": false
     }
   ]
 }
