@@ -199,6 +199,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-vault-config</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -253,6 +254,7 @@
                             <mainClass>org.arya.banking.common.AryaBankingCommonApplication</mainClass>
                             <arguments>
                                 <argument>--spring.profiles.active=metadata-loader</argument>
+                                <argument>--spring.cloud.vault.enabled=false</argument>
                             </arguments>
                         </configuration>
                     </execution>
