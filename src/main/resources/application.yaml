@@ -4,7 +4,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://admin:ka3k912719@bankingcluster.ayhvgpk.mongodb.net/metadata?retryWrites=true&w=majority&appName=bankingCluster
+      uri: mongodb+srv://admin:${MONGO.PASSWORD}@bankingcluster.ayhvgpk.mongodb.net/metadata?retryWrites=true&w=majority&appName=bankingCluster
 
   kafka:
     bootstrap-servers: localhost:9092
