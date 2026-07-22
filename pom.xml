@@ -240,28 +240,6 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>run-metadata-loader</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>org.arya.banking.common.AryaBankingCommonApplication</mainClass>
-                            <arguments>
-                                <argument>--spring.profiles.active=metadata-loader</argument>
-                                <argument>--spring.cloud.vault.enabled=false</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.13</version> <!-- latest -->
@@ -306,11 +284,32 @@
         <profile>
             <id>metadata-loader</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <spring.profiles.active>metadata-loader</spring.profiles.active>
-            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>run-metadata-loader</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>org.arya.banking.common.AryaBankingCommonApplication</mainClass>
+                                    <arguments>
+                                        <argument>--spring.profiles.active=metadata-loader</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
