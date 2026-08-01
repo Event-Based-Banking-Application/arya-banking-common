@@ -21,6 +21,10 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
 
         log.info("response status: {}", response.status());
         GlobalException globalException = extractGlobalException(response);
+        if (Objects.isNull(globalException)) {
+            globalException = new GlobalException(String.valueOf(response.status()), "Error in feign request");
+            globalException.setHttpErrorCode(response.status());
+        }
         log.error("Error in request went through feign client: {}", globalException.getErrorCode() + " - " + globalException.getErrorMessage());
         return globalException;
     }
@@ -31,6 +35,11 @@ public class FeignClientErrorDecoder implements ErrorDecoder {
         Reader reader = null;
 
         try {
+            if (Objects.isNull(response.body())) {
+                globalException = new GlobalException(String.valueOf(response.status()), "Empty response body");
+                globalException.setHttpErrorCode(response.status());
+                return globalException;
+            }
             reader = response.body().asReader(StandardCharsets.UTF_8);
             String result = IOUtils.toString(reader);
             ObjectMapper mapper = new ObjectMapper();

@@ -59,13 +59,13 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ProducerFactory<String, Object> producerFactory() {
+    public ProducerFactory<?, ?> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, Object> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
+    public KafkaTemplate<?, ?> kafkaTemplate() {
+        return new KafkaTemplate<>((ProducerFactory<?, ?>) producerFactory());
     }
 
     public <K, V> ConsumerFactory<K, V> consumerFactory(String groupId) {

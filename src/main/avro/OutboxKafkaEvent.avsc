@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "org.arya.banking.common.avro",
+  "name": "OutboxKafkaEvent",
+  "fields": [
+    {
+      "name": "aggregateId",
+      "type": "string"
+    },
+    {
+      "name": "eventType",
+      "type": "string"
+    },
+    {
+      "name": "payload",
+      "type": "string"
+    }
+  ]
+}
