@@ -1,0 +1,15 @@
+@namespace("org.arya.banking.common.avro")
+
+protocol UserCreateEventProtocol {
+
+  import idl "EventMetadata.avdl";
+
+  record UserCreateEvent {
+    EventMetadata metadata;
+    string userId;
+    string status;
+    boolean isEmailVerified = false;
+    boolean isContactVerified = false;
+  }
+
+}

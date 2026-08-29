@@ -1,0 +1,16 @@
+@namespace("org.arya.banking.common.avro")
+
+protocol AuditEventProtocol {
+
+  import idl "EventMetadata.avdl";
+
+  record AuditEvent {
+    string actionType;
+    string targetTable;
+    string targetId;
+    string userId;
+    string changeType;
+    string details;
+  }
+
+}

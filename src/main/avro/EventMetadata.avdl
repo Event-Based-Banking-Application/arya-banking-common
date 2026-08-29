@@ -1,0 +1,11 @@
+@namespace("org.arya.banking.common.avro")
+
+protocol EventMetadataProtocol {
+
+  record EventMetadata {
+    string correlationId;
+    string eventId;
+    string? causationId = null;
+  }
+
+}

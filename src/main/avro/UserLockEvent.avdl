@@ -1,0 +1,12 @@
+@namespace("org.arya.banking.common.avro")
+
+protocol UserLockEventProtocol {
+
+  import idl "EventMetadata.avdl";
+
+  record UserLockEvent {
+    string userId;
+    string eventId;
+  }
+
+}

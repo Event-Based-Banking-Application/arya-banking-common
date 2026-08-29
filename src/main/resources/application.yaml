@@ -15,3 +15,6 @@ app:
   metadata:
     versioning:
       enabled: true
+
+server:
+  port: 8082

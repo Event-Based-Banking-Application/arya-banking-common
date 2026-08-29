@@ -12,7 +12,8 @@ public interface KafkaConstants {
     String KAFKA_AVRO_DESERIALIZER = "io.confluent.kafka.serializers.KafkaAvroDeserializer";
 
     //kafka topic
-    String USER_CREATE_EVENT = "user.create.event";
-    String AUDIT_EVENT = "audit.event";
+    String AUTH_FAILED_TOPIC = "AUTH_SERVICE.LOGIN-FAILED.V1";
+    String USER_UPDATE_TOPIC = "USER_SERVICE.USER.UPDATED.V1";
+    String USER_CREATE_TOPIC = "USER_SERVICE.USER.CREATED.V1";
 
 }

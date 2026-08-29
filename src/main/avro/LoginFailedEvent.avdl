@@ -1,0 +1,13 @@
+@namespace("org.arya.banking.common.avro")
+
+protocol LoginFailedEventProtocol {
+
+  import idl "EventMetadata.avdl";
+
+  record LoginFailedEvent {
+    EventMetadata metadata;
+    string userId;
+    boolean isLockUser = false;
+  }
+
+}

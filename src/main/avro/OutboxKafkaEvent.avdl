@@ -1,0 +1,13 @@
+@namespace("org.arya.banking.common.avro")
+
+protocol OutboxKafkaEventProtocol {
+
+  import idl "EventMetadata.avdl";
+
+  record OutboxKafkaEvent {
+    string aggregateId;
+    string eventType;
+    string payload;
+  }
+
+}
