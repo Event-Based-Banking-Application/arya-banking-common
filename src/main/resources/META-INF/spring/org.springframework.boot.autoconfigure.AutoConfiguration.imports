@@ -1,1 +1,2 @@
 org.arya.banking.common.config.CorrelationIdFilter
+org.arya.banking.common.aop.EventContextAop
