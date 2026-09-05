@@ -1,20 +1,18 @@
 # Arya Banking Common
 
-Multi-module shared library for the Arya Banking microservices ecosystem.
+Multi-module shared library for the Arya Banking microservices platform.
 
 ## Modules
 
 | Module | Artifact | Description |
 |---|---|---|
-| **core** | `org.arya.banking:core` | Domain models, exceptions, DTOs, constants, metadata annotations, utilities |
-| **mongo** | `org.arya.banking:mongo` | MongoDB configuration (auditing, converters, transactions) |
-| **kafka** | `org.arya.banking:kafka` | Kafka producers, consumers, Avro IDL schemas, topic constants |
-| **feign** | `org.arya.banking:feign` | Feign client configuration and error decoding |
-| **oauth2** | `org.arya.banking:oauth2` | OAuth2 client credentials configuration |
+| **core** | `core` | Domain models, exceptions, DTOs, utilities |
+| **mongo** | `mongo` | MongoDB configuration |
+| **kafka** | `kafka` | Kafka/Avro support |
+| **feign** | `feign` | Feign client config |
+| **oauth2** | `oauth2` | OAuth2 client credentials |
 
-## Quick Start
-
-Add the BOM import and the modules you need:
+## Usage
 
 ```xml
 <dependencyManagement>
@@ -34,39 +32,17 @@ Add the BOM import and the modules you need:
         <groupId>org.arya.banking</groupId>
         <artifactId>core</artifactId>
     </dependency>
-    <dependency>
-        <groupId>org.arya.banking</groupId>
-        <artifactId>kafka</artifactId>
-    </dependency>
 </dependencies>
 ```
 
 ## Build
 
 ```sh
-mvn clean install          # build all 5 modules
-mvn clean deploy -s settings.xml  # publish to GitHub Packages
+mvn clean install
 ```
-
-## Package Structure
-
-| Module | Base Package |
-|---|---|
-| core | `org.arya.banking.common.core.*` |
-| mongo | `org.arya.banking.common.mongo.*` |
-| kafka | `org.arya.banking.common.kafka.*` |
-| feign | `org.arya.banking.common.feign.*` |
-| oauth2 | `org.arya.banking.common.oauth2.*` |
-
-Avro-generated classes: `org.arya.banking.common.avro`
 
 ## Links
 
-- [Documentation](https://event-based-banking-application.github.io/arya-banking/docs/common/)
-- [GitHub Packages](https://github.com/Event-Based-Banking-Application/arya-banking-common/packages)
-- [BOM Repository](https://github.com/Event-Based-Banking-Application/arya-banking-bom)
+- [Docs](https://event-based-banking-application.github.io/arya-banking/docs/common/)
+- [BOM](https://github.com/Event-Based-Banking-Application/arya-banking-bom)
 - [Metadata Loader](https://github.com/Event-Based-Banking-Application/arya-banking-common-metadata-loader)
-
-## Maintainers
-
-- [Karthik Kulkarni](https://github.com/karthikkulkarni)
