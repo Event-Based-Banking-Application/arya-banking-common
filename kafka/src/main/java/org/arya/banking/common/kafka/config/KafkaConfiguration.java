@@ -1,9 +1,13 @@
 package org.arya.banking.common.kafka.config;
 
+import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.common.config.SaslConfigs;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,11 +35,35 @@ public class KafkaConfiguration {
     @Value("${spring.kafka.properties.schema.registry.url}")
     private String schemaRegistryUrl;
 
+    @Value("${spring.kafka.properties.security.protocol:PLAINTEXT}")
+    private String securityProtocol;
+
+    @Value("${spring.kafka.properties.sasl.mechanism:PLAIN}")
+    private String saslMechanism;
+
+    @Value("${spring.kafka.properties.sasl.jaas.config:}")
+    private String saslJaasConfig;
+
+    @Value("${spring.kafka.properties.basic.auth.credentials.source:}")
+    private String basicAuthCredentialsSource;
+
+    @Value("${spring.kafka.properties.basic.auth.user.info:}")
+    private String basicAuthUserInfo;
+
     private Map<String, Object> commonConfig() {
 
         Map<String, Object> configs = new HashMap<>();
         configs.put(BOOTSTRAP_SERVER, bootstrapServers);
         configs.put(SCHEMA_REGISTRY_URL, schemaRegistryUrl);
+        configs.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, securityProtocol);
+        if (StringUtils.hasText(saslJaasConfig)) {
+            configs.put(SaslConfigs.SASL_MECHANISM, saslMechanism);
+            configs.put(SaslConfigs.SASL_JAAS_CONFIG, saslJaasConfig);
+        }
+        if (StringUtils.hasText(basicAuthCredentialsSource)) {
+            configs.put(AbstractKafkaSchemaSerDeConfig.BASIC_AUTH_CREDENTIALS_SOURCE, basicAuthCredentialsSource);
+            configs.put(AbstractKafkaSchemaSerDeConfig.USER_INFO_CONFIG, basicAuthUserInfo);
+        }
         return configs;
     }
 
